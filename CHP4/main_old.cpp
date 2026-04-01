@@ -1,4 +1,4 @@
-// main.cpp
+// main_old.cpp
 // 중간고사, 기말고사, 그리고 과제 점수 몇개를 받고
 // 마지막 평균 결과 점수를 계산하기.
 
@@ -15,9 +15,7 @@ using namespace std;
 typedef vector<double>::size_type vec_sz;
 
 // 함수 원형 정의문
-istream& read_hw(istream&, vector<double>&); 
-double grade(double, double, const vector<double>&);
-double grade(double, double, double);
+
 double median(vector<double>);
 
 int main(void) {
@@ -84,22 +82,5 @@ double grade(double mid, double fin, const vector<double>& hw) {
 double grade(double midterm, double final, double homework) {
 	return 0.2 * midterm + 0.4 * final + 0.4 * homework;
 	return 0.2 * midterm + 0.4 * final + 0.4 * homework * 0.4;
-}
-
-//vector<double>의 중앙값을 구함
-// 함수를 호출하면 인수로 제공된 벡터를 통째로 복사
-double median(vector<double> vec) {
-	vec_sz size = vec.size();
-
-	if (size == 0) {
-		throw domain_error("median of empty vector!");
-		return 1;
-	}
-
-	sort(vec.begin(), vec.end());
-	vec_sz mid = size / 2;
-	return size % 2 == 0 
-		? (vec[mid] + vec[mid - 1]) / 2 // 참일 때 반환
-		: vec[mid]; // 거짓일 때 반환
 }
 
